@@ -1,0 +1,168 @@
+import type { Room } from '@/types';
+
+// All GPS coordinates confirmed on-site.
+// Bldg B is split at the midline between its north (vendor hall) and south (autograph) halves.
+// Bldg A polygon is shared by both rooms inside it (Little Theater + Photo Studio).
+
+// Bldg B midline interpolation (t=0.5 on each vertical edge):
+const blgBMidW: [number, number] = [
+  (33.82953639154701 + 33.82924586154599) / 2,
+  (-118.32118817230042 + -118.32156639629012) / 2,
+]; // [33.82939, -118.32138]
+const blgBMidE: [number, number] = [
+  (33.82936430551749 + 33.82895209346322) / 2,
+  (-118.32085773112705 + -118.32126483367746) / 2,
+]; // [33.82916, -118.32106]
+
+export const rooms: Room[] = [
+  {
+    id: 'main-auditorium',
+    name: 'Bldg. C / Auditorium',
+    shortName: 'Auditorium',
+    description: 'Entrance; Panel Room 1; Restrooms.',
+    capacity: 800,
+    floor: 'ground',
+    svgPathId: 'room-auditorium',
+    color: 'bg-rose-900',
+    entranceCoords: [33.82991083508827, -118.32061733996542],
+    polygonCoords: [
+      [33.83012341631142, -118.32076486011805],
+      [33.82983272526931, -118.32036491909408],
+      [33.82967710270245, -118.32056745443718],
+      [33.83001779774448, -118.32090669320493],
+    ],
+  },
+  {
+    id: 'sunnydale-mall',
+    name: 'Bldg. B / Main Gym',
+    shortName: 'Gym',
+    description: 'Sunnydale Mall; Vendors; Autograph Row; Auction; Concessions/ Refreshments; Fandom Charities Merch Table; Restrooms.',
+    floor: 'ground',
+    svgPathId: 'room-vendor-hall',
+    color: 'bg-amber-900',
+    entranceCoords: [33.82944, -118.32112],
+    polygonCoords: [
+      [33.82953639154701, -118.32118817230042],
+      [33.82936430551749, -118.32085773112705],
+      blgBMidE,
+      blgBMidW,
+    ],
+  },
+  {
+    id: 'autograph-alley',
+    name: 'Bldg. B / Autograph Row',
+    shortName: 'Autograph Row',
+    description: 'Bldg. B / Main Gym.',
+    floor: 'ground',
+    svgPathId: 'room-autograph',
+    color: 'bg-pink-900',
+    entranceCoords: [33.82919, -118.32132],
+    polygonCoords: [
+      blgBMidW,
+      blgBMidE,
+      [33.82895209346322, -118.32126483367746],
+      [33.82924586154599, -118.32156639629012],
+    ],
+  },
+  {
+    id: 'panel-room-a',
+    name: 'Bldg. D / Annex-Café',
+    shortName: 'Annex',
+    description: 'Entrance; Fan Experiences; Outside Tables; Restrooms.',
+    floor: 'ground',
+    svgPathId: 'room-panel-a',
+    color: 'bg-indigo-900',
+    entranceCoords: [33.82810, -118.31952],
+    polygonCoords: [
+      [33.828535062109516, -118.31977474844602],
+      [33.828527669453514, -118.31931434849898],
+      [33.8276722707506,   -118.31926453370644],
+      [33.82764893540865,  -118.31944722203754],
+    ],
+  },
+  {
+    id: 'panel-room-b',
+    name: 'Panel Room 2 / Little Theater (2nd FLR*)',
+    shortName: 'Little Theater',
+    description: 'Bldg. A / Courtyard; Photo Studio Rm A106; Specialty Photo Ops: Check-In Rm A106; Restrooms.',
+    capacity: 150,
+    floor: 'second',
+    svgPathId: 'room-panel-b',
+    color: 'bg-indigo-800',
+    entranceCoords: [33.83049472281359, -118.3215552028273],
+    polygonCoords: [
+      [33.831018578780224, -118.32137581161213],
+      [33.83070320663068,  -118.32104001548036],
+      [33.83047409487107,  -118.32152836929043],
+      [33.83071699650046,  -118.32178387206015],
+    ],
+  },
+  {
+    id: 'photo-op-room',
+    name: 'Photo Studio Rm A106',
+    shortName: 'Photo Studio',
+    description: 'Bldg. A / Courtyard; Panel Room 2 / Little Theater (2nd FLR*); Specialty Photo Ops: Check-In Rm A106; Restrooms.',
+    floor: 'ground',
+    svgPathId: 'room-photo-op',
+    color: 'bg-violet-900',
+    entranceCoords: [33.83071788600666, -118.32156615196538],
+    // Shares Bldg A footprint with Little Theater
+    polygonCoords: [
+      [33.831018578780224, -118.32137581161213],
+      [33.83070320663068,  -118.32104001548036],
+      [33.83047409487107,  -118.32152836929043],
+      [33.83071699650046,  -118.32178387206015],
+    ],
+  },
+  {
+    id: 'registration',
+    name: 'Specialty Photo Ops: Check-In Rm A106',
+    shortName: 'Check-In',
+    description: 'Bldg. A / Courtyard; Photo Studio Rm A106; Panel Room 2 / Little Theater (2nd FLR*); Restrooms.',
+    floor: 'ground',
+    svgPathId: 'room-registration',
+    color: 'bg-blue-900',
+    entranceCoords: [33.83085813057013, -118.32118847170871],
+  },
+  {
+    id: 'school-courtyard',
+    name: 'Bldg. A / Courtyard',
+    shortName: 'Courtyard',
+    description: 'Panel Room 2 / Little Theater (2nd FLR*); Photo Studio Rm A106; Specialty Photo Ops: Check-In Rm A106; Restrooms.',
+    floor: 'ground',
+    svgPathId: 'room-school-courtyard',
+    color: 'bg-emerald-800',
+  },
+  {
+    id: 'outdoor-courtyard',
+    name: 'Zone A — Double Meat Palace',
+    shortName: 'Doublemeat Palace',
+    description: 'Food Trucks; Outdoor Tables.',
+    floor: 'ground',
+    svgPathId: 'room-courtyard',
+    color: 'bg-emerald-900',
+    entranceCoords: [33.82987216730294, -118.32203883181464],
+    polygonCoords: [
+      [33.83003036195519, -118.32199323426639],
+      [33.829526811763316, -118.32132268208643],
+      [33.829304000997375, -118.32164722934155],
+      [33.829861026823444, -118.32222390421629],
+    ],
+  },
+  {
+    id: 'zone-b-party',
+    name: 'Zone B',
+    shortName: 'Party!',
+    description: 'Saturday Night Party.',
+    floor: 'ground',
+    svgPathId: 'room-zone-b',
+    color: 'bg-fuchsia-900',
+    entranceCoords: [33.829584742349326, -118.32079294836427],
+    polygonCoords: [
+      [33.8296070234969, -118.32105714342316],
+      [33.829767446738295, -118.32080769801225],
+      [33.82959588298285, -118.32048583296584],
+      [33.829368616179266, -118.32082110905583],
+    ],
+  },
+];

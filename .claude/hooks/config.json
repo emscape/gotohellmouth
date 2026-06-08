@@ -1,0 +1,67 @@
+{
+  "_readme": "Customize this file for your project. See .claude/hooks/README.md for full documentation.",
+  "project_name": "HellmouthCon",
+  "session_start": {
+    "custom_notes": [
+      "Keep the schedule data local to the repo until the 2026 lineup is final.",
+      "Use useMySchedule for device-local saved events.",
+      "Do not invent guests, session times, or venue facts."
+    ]
+  },
+  "arch_rules": {
+    "enabled": false,
+    "rules": []
+  },
+  "content_watch": {
+    "enabled": false,
+    "path_pattern": "src/data",
+    "file_extensions": [".json", ".yaml", ".yml"],
+    "validate_command": ""
+  },
+  "bash_description_guard": {
+    "enabled": true
+  },
+  "env_guard": {
+    "enabled": true
+  },
+  "push_audit": {
+    "enabled": true
+  },
+  "dep_guard": {
+    "enabled": true,
+    "warn_patterns": [
+      "npm install",
+      "npm i ",
+      "yarn add",
+      "pnpm add"
+    ],
+    "custom_message": "A dependency install was detected. Confirm it is necessary before proceeding."
+  },
+  "empty_test_guard": {
+    "enabled": true,
+    "test_file_patterns": ["*.test.*", "*.spec.*", "*_test.*", "*_spec.*"],
+    "block_empty_describe": true,
+    "block_empty_it": true,
+    "block_todo_tests": false
+  },
+  "todo_format": {
+    "enabled": false,
+    "required_pattern": "TODO\\([^)]+\\):",
+    "on_violation": "warn"
+  },
+  "script_guard": {
+    "enabled": true,
+    "package_json_paths": ["package.json"],
+    "on_missing": "warn"
+  },
+  "commit_guard": {
+    "enabled": true,
+    "required_markers": ["WHY:", "EXPECTED:"],
+    "custom_message": "Commit messages must include WHY and EXPECTED sections."
+  },
+  "commands": {
+    "lint": "npm run lint",
+    "test": "npm run build",
+    "typecheck": "npx tsc --noEmit"
+  }
+}

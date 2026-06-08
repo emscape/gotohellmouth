@@ -1,0 +1,58 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-env-guard.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-bash-description.js"
+          },
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-dep-guard.js"
+          },
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-script-exists.js"
+          },
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-commit-message.js"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/check-empty-tests.js"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -File .claude/hooks/session-start.ps1"
+          }
+        ]
+      }
+    ]
+  }
+}
