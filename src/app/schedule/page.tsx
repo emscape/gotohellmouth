@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function SchedulePage() {
+  const publicScheduleEvents = events.filter(event => event.category !== 'autograph');
+
   return (
     <div className="min-h-screen bg-[var(--color-hellmouth-950)]">
       <HeaderBar />
@@ -20,7 +22,7 @@ export default function SchedulePage() {
         <p className="text-[var(--color-moon-200)] mb-2 text-sm">
           June 13–14, 2026 · Torrance High School · All times Pacific
         </p>
-        <ScheduleView events={events} rooms={rooms} />
+        <ScheduleView events={publicScheduleEvents} rooms={rooms} />
       </div>
     </div>
   );

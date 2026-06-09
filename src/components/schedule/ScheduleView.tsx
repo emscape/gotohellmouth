@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import type { ScheduleEvent, Room, ConventionDay } from '@/types';
-import { getEventsByDay } from '@/lib/schedule-helpers';
 import EventCard from './EventCard';
 import { cn } from '@/lib/utils';
 
@@ -20,7 +19,7 @@ export default function ScheduleView({ events, rooms }: Props) {
   const [activeDay, setActiveDay] = useState<ConventionDay>('saturday');
   const [activeRoom, setActiveRoom] = useState<string>('all');
 
-  const dayEvents = getEventsByDay(activeDay);
+  const dayEvents = events.filter(e => e.day === activeDay);
   const filtered =
     activeRoom === 'all'
       ? dayEvents
