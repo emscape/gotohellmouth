@@ -9,7 +9,7 @@ import SaveButton from '@/components/schedule/SaveButton';
 
 export function generateStaticParams() {
   return events
-    .filter(event => event.category !== 'autograph')
+    .filter(event => event.category !== 'autograph' && !event.hidden)
     .map(e => ({ eventId: e.id }));
 }
 
@@ -37,7 +37,7 @@ export default async function EventDetailPage({
 }) {
   const { eventId } = await params;
   const event = events.find(e => e.id === eventId);
-  if (!event || event.category === 'autograph') notFound();
+  if (!event || event.category === 'autograph' || event.hidden) notFound();
 
   const room = rooms.find(r => r.id === event.roomId);
   const eventGuests = (event.guestIds ?? [])

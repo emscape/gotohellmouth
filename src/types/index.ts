@@ -24,6 +24,7 @@ export interface ScheduleEvent {
   requiresTicket?: boolean;
   vipOnly?: boolean;
   tags?: string[];
+  hidden?: boolean;
 }
 
 export interface Guest {

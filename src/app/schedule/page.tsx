@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function SchedulePage() {
-  const publicScheduleEvents = events.filter(event => event.category !== 'autograph');
+  const publicScheduleEvents = events.filter(event => event.category !== 'autograph' && !event.hidden);
 
   return (
     <div className="min-h-screen bg-[var(--color-hellmouth-950)]">
