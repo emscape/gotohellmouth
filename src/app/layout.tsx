@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'HellmouthCon',
-  description: 'Standalone schedule and map slice for HellmouthCon 2026.',
+  description: 'The fan convention schedule and venue map for HellmouthCon 2026 — Torrance High School, June 13–14.',
   icons: { icon: '/favicon.svg' },
 };
 
