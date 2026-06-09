@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, MapPin, Ticket, Crown } from 'lucide-react';
 import { events } from '@/data/events';
 import { rooms, guests as allGuests } from '@/data';
-import { categoryLabel, categoryColors, formatTimeRange, cn } from '@/lib/utils';
+import { categoryLabel, categoryColors, formatTimeRange, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
 import SaveButton from '@/components/schedule/SaveButton';
 
 export function generateStaticParams() {
@@ -43,6 +43,7 @@ export default async function EventDetailPage({
   const eventGuests = (event.guestIds ?? [])
     .map(id => allGuests.find(g => g.id === id))
     .filter(Boolean);
+  const needsAdvanceTicket = hasAdvanceTicketRequirement(event);
 
   const dayLabel = event.day === 'saturday' ? 'Saturday, June 13' : 'Sunday, June 14';
 
@@ -64,9 +65,9 @@ export default async function EventDetailPage({
             <Crown size={10} /> VIP Only
           </span>
         )}
-        {event.requiresTicket && (
-          <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border border-[var(--border)] text-[var(--color-moon-200)]">
-            <Ticket size={10} /> Ticket Required
+        {needsAdvanceTicket && (
+          <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border border-[rgba(232,48,80,0.3)] bg-[rgba(232,48,80,0.08)] text-[var(--color-crimson-300)]">
+            <Ticket size={10} /> Advance Ticket Required
           </span>
         )}
       </div>
@@ -96,6 +97,13 @@ export default async function EventDetailPage({
           </div>
         )}
       </div>
+
+      {needsAdvanceTicket && (
+        <div className="mb-6 flex items-start gap-3 rounded-lg border border-[rgba(232,48,80,0.3)] bg-[rgba(232,48,80,0.08)] px-4 py-3 text-sm text-[var(--color-crimson-100)]">
+          <Ticket size={16} className="mt-0.5 shrink-0 text-[var(--color-crimson-300)]" />
+          <p>Advance ticket required for this event.</p>
+        </div>
+      )}
 
       <div className="text-[var(--color-hellmouth-200)] leading-relaxed mb-8 flex flex-col gap-4">
         {event.description.split(/\n\s*\n/).map((para, i) => (

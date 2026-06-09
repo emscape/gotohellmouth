@@ -47,10 +47,26 @@ function sundayCsvEvent(
 
 const saturdayCsvEvents: ScheduleEvent[] = [
   csvEvent('sat-opening-ceremonies', 'Opening Ceremonies', '2026-06-13T09:30:00-07:00', '2026-06-13T10:00:00-07:00', 'main-auditorium', 'panel'),
-  csvEvent('sat-welcome-to-the-hellmouth', 'Welcome to the Hellmouth', '2026-06-13T09:30:00-07:00', '2026-06-13T10:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-welcome-to-the-hellmouth', 'Welcome to the Hellmouth', '2026-06-13T09:30:00-07:00', '2026-06-13T10:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Kick your weekend off and sink your teeth into Buffy history alongside Julie Benz in the halls of Sunnydale High. This photo pays homage to the iconic moment when Darla set the tone for an entire genre-subverting world. Whether you're new in town or a vampire with centuries of convention experience, this fang-tastic photo opportunity will be killer.
+
+Specialty Tableau Photo with Julie Benz.
+
+$110 | Limited to 30`,
+    heroImage: '/images/specialty-tableaux/welcome-to-the-hellmouth.jpg',
+  },
   csvEvent('sat-amber-benson-audiobook', 'Amber Benson Audiobook', '2026-06-13T10:00:00-07:00', '2026-06-13T11:00:00-07:00', 'main-auditorium', 'panel'),
   csvEvent('sat-soothsaying', 'Soothsaying', '2026-06-13T10:00:00-07:00', '2026-06-13T10:30:00-07:00', 'panel-room-b', 'panel'),
-  csvEvent('sat-they-might-take-yours-doug', 'They Might Take Yours (Doug)', '2026-06-13T10:00:00-07:00', '2026-06-13T10:30:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-they-might-take-yours-doug', 'They Might Take Yours (Doug)', '2026-06-13T10:00:00-07:00', '2026-06-13T10:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Inspired by one of Buffy's most haunting episodes, this eerie tableau places you alongside the very gentlemanly Doug Jones. Featuring a preserved heart in a jar and an homage to the looming Sunnydale clocktower, this chilling photo will cut right to the heart.
+
+Specialty Tableau Photo with Doug Jones.
+
+$95 | Limited to 30 each day`,
+    heroImage: '/images/specialty-tableaux/they-might-take-yours.jpg',
+  },
   csvEvent('sat-larry-emma', 'Larry, Emma', '2026-06-13T10:00:00-07:00', '2026-06-13T10:30:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-fortunetelling', 'Fortunetelling', '2026-06-13T10:30:00-07:00', '2026-06-13T11:00:00-07:00', 'panel-room-b', 'panel'),
   {
@@ -63,8 +79,24 @@ Fan Experience Breakfast with Amy Acker, Charisma Carpenter, Julie Benz, Mark Lu
   csvEvent('sat-clare-james', 'Clare, James', '2026-06-13T10:30:00-07:00', '2026-06-13T11:00:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-camden', 'Camden??', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'main-auditorium', 'panel'),
   csvEvent('sat-demonhuntr', 'Demonhuntr', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'panel-room-b', 'panel'),
-  csvEvent('sat-moving-in', 'We\'re Moving In (Angel Cast Photo)', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'photo-op-room', 'photo-op'),
-  csvEvent('sat-lesbian-gay-type-lovers', 'Lesbian Gay-Type Lovers (Amber/Iyari)', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-moving-in', 'We\'re Moving In (Angel Cast Photo)', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `68 Rooms, 68 Vacancies. The Hyperion Hotel wasn't just headquarters—it was home. Join Amy Acker, Charisma Carpenter, J. August Richards, Julie Benz, Mark Lutz, and Stephanie Romanov in this unique HellmouthCon tribute to the place where Angel Investigations became a family.
+
+Specialty Tableau Cast Photo with Amy Acker, Charisma Carpenter, J August Richards, Julie Benz, Mark Lutz, and Stephanie Romanov.
+
+$430 | Limited to 15`,
+    heroImage: '/images/specialty-tableaux/were-moving-in.jpg',
+  },
+  {
+    ...csvEvent('sat-lesbian-gay-type-lovers', 'Lesbian Gay-Type Lovers (Amber/Iyari)', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Stand between two of Willow's great loves in this Combo Photo in the Photo Studio with Amber Benson and Iyari Limon.
+
+Specialty Tableau Photo with Amber Benson and Iyari Limon.
+
+$130 | Limited to 30`,
+    heroImage: '/images/specialty-tableaux/lesbian-gay-type-lovers.jpg',
+  },
   csvEvent('sat-clare', 'Clare', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'autograph-alley', 'autograph'),
   { ...csvEvent('sat-sunnydale-elem', 'Sunnydale Elem', '2026-06-13T11:00:00-07:00', '2026-06-13T11:30:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   csvEvent('sat-amber-photo', 'Amber', '2026-06-13T11:30:00-07:00', '2026-06-13T12:00:00-07:00', 'photo-op-room', 'photo-op'),
@@ -74,7 +106,13 @@ Fan Experience Breakfast with Amy Acker, Charisma Carpenter, Julie Benz, Mark Lu
   csvEvent('sat-j-august', 'J August', '2026-06-13T12:00:00-07:00', '2026-06-13T12:30:00-07:00', 'photo-op-room', 'photo-op'),
   csvEvent('sat-doug', 'Doug', '2026-06-13T12:00:00-07:00', '2026-06-13T12:30:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-studying', 'Studying', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'panel-room-b', 'panel'),
-  csvEvent('sat-ruler-throne', 'They Made Me Ruler (Throne)', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-ruler-throne', 'They Made Me Ruler', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Step into the palace of Pylea to take your place beside Princess Cordelia and the Groosalugg beside the actual throne used during the filming of Angel's Pylea arc. This is no replica—it's the exact throne seen on screen. This is a once-in-a-lifetime chance to claim the seat of power in the company of two of Pylea's rulers while recreating Angel Investigations' most unforgettable adventure.
+
+Specialty Tableau Photo with Charisma Carpenter and Mark Lutz.`,
+    heroImage: '/images/specialty-tableaux/they-made-me-ruler.jpg',
+  },
   csvEvent('sat-james', 'James', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'photo-op-room', 'photo-op'),
   csvEvent('sat-amber-autographs', 'Amber', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-casting-call', 'Casting Call', '2026-06-13T13:00:00-07:00', '2026-06-13T14:00:00-07:00', 'main-auditorium', 'panel'),
@@ -91,10 +129,24 @@ Fan Experience Party Game with Clare Kramer, Julie Benz, and Stephanie Romanov.`
   csvEvent('sat-j-autographs', 'J', '2026-06-13T13:30:00-07:00', '2026-06-13T14:00:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-beauty-and-the-beasts', 'Beauty and the Beasts', '2026-06-13T14:00:00-07:00', '2026-06-13T15:00:00-07:00', 'main-auditorium', 'panel'),
   csvEvent('sat-panel-by-panel', 'Panel by Panel', '2026-06-13T14:00:00-07:00', '2026-06-13T14:30:00-07:00', 'panel-room-b', 'panel'),
-  csvEvent('sat-lets-get-crazy-clare', 'Let\'s Get Crazy (Clare)', '2026-06-13T14:00:00-07:00', '2026-06-13T14:30:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-lets-get-crazy-clare', 'Let\'s Get Crazy (Clare)', '2026-06-13T14:00:00-07:00', '2026-06-13T14:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `A completely original Brain Suck-themed photo experience designed just for HellmouthCon. This custom setup has never been offered at any convention, anywhere.
+
+Specialty Tableau Photo with Clare Kramer.
+
+$85 | Limited to 30 each day`,
+    heroImage: '/images/specialty-tableaux/lets-get-crazy.jpg',
+  },
   csvEvent('sat-charisma-photo', 'Charisma', '2026-06-13T14:00:00-07:00', '2026-06-13T14:30:00-07:00', 'photo-op-room', 'photo-op'),
   csvEvent('sat-j-autographs-2', 'J', '2026-06-13T14:00:00-07:00', '2026-06-13T14:30:00-07:00', 'autograph-alley', 'autograph'),
-  csvEvent('sat-is-this-seat-taken', 'Is This Seat Taken? (C+A)', '2026-06-13T14:30:00-07:00', '2026-06-13T15:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...csvEvent('sat-is-this-seat-taken', 'Is This Seat Taken? (C+A)', '2026-06-13T14:30:00-07:00', '2026-06-13T15:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `A one-of-a-kind pairing of Tara and Glory, brought together for the first time ever. Created exclusively for HellmouthCon and never offered at any other event.
+
+Specialty Tableau Photo with Clare Kramer and Amber Benson.`,
+    heroImage: '/images/specialty-tableaux/is-this-seat-taken.jpg',
+  },
   csvEvent('sat-amy-iyari-julie', 'Amy Iyari julie', '2026-06-13T14:30:00-07:00', '2026-06-13T15:00:00-07:00', 'autograph-alley', 'autograph'),
   { ...csvEvent('sat-sunnydale-high-gsa', 'Sunnydale High GSA', '2026-06-13T14:30:00-07:00', '2026-06-13T15:00:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   csvEvent('sat-clare-chats-w-friends', 'Clare chats w/friends', '2026-06-13T15:00:00-07:00', '2026-06-13T16:00:00-07:00', 'main-auditorium', 'panel'),
@@ -109,7 +161,7 @@ Fan Experience Party Game with James C Leary and Mark Lutz.`,
   { ...csvEvent('sat-mixer', 'Mixer', '2026-06-13T15:00:00-07:00', '2026-06-13T15:30:00-07:00', 'school-courtyard', 'mixer'), hidden: true },
   csvEvent('sat-larry-photo', 'Larry', '2026-06-13T15:30:00-07:00', '2026-06-13T16:00:00-07:00', 'photo-op-room', 'photo-op'),
   csvEvent('sat-stephanie-julie', 'Stephanie, Julie', '2026-06-13T15:30:00-07:00', '2026-06-13T16:00:00-07:00', 'autograph-alley', 'autograph'),
-  csvEvent('sat-neurodivergence-in-buffyverse', 'Neurodivergence in Buffyverse', '2026-06-13T16:00:00-07:00', '2026-06-13T17:00:00-07:00', 'panel-room-b', 'panel'),
+  csvEvent('sat-neurodivergence-in-buffyverse', 'Neurodivergence in the Buffyverse', '2026-06-13T16:00:00-07:00', '2026-06-13T17:00:00-07:00', 'panel-room-b', 'panel'),
   csvEvent('sat-charisma-clare', 'Charisma Clare', '2026-06-13T16:00:00-07:00', '2026-06-13T16:30:00-07:00', 'autograph-alley', 'autograph'),
   { ...csvEvent('sat-watchers-academy', 'Watchers Academy', '2026-06-13T16:00:00-07:00', '2026-06-13T16:30:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   csvEvent('sat-buffyverse', 'Buffyverse', '2026-06-13T16:30:00-07:00', '2026-06-13T17:00:00-07:00', 'panel-room-b', 'panel'),
@@ -128,15 +180,45 @@ Fan Experience Party Game with Amy Acker and J August Richards.`,
 ];
 
 const sundayCsvEvents: ScheduleEvent[] = [
-  sundayCsvEvent('sun-yes-please-diner', 'Yes Please (Diner)', '2026-06-14T09:30:00-07:00', '2026-06-14T10:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-yes-please-diner', 'Yes Please (Diner)', '2026-06-14T09:30:00-07:00', '2026-06-14T10:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Fred and Gunn's romance remains one of Angel's sweetest stories — complete with whipped cream! Pose like you're sharing breakfast at a diner booth with Amy Acker and J. August Richards in a scene inspired by the quiet moments that fans can never have too many of (like Fred with pancakes).
+
+Specialty Tableau Photo with Amy Acker and J August Richards.`,
+    heroImage: '/images/specialty-tableaux/yes-please.jpg',
+  },
   sundayCsvEvent('sun-doug-jones', 'Doug Jones cosplay and sfx Q&A', '2026-06-14T10:00:00-07:00', '2026-06-14T11:00:00-07:00', 'main-auditorium', 'panel'),
   sundayCsvEvent('sun-cosplay-and-sfx-beginners', 'Cosplay and sfx for beginners', '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'panel-room-b', 'workshop'),
-  sundayCsvEvent('sun-you-need-this-more-than-i-do', 'You Need This More Than I Do (E+C)', '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'photo-op-room', 'photo-op'),
-  sundayCsvEvent('sun-some-of-the-kids-at-my-camp', 'Some of the Kids at my Camp Put it Together For Me (J/Axe)', '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-you-need-this-more-than-i-do', 'You Need This More Than I Do (E+C)', '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `What would you do if you found yourself between Cordelia and Anya in the Sunnydale courtyard and they offer you the famous vengeance amulet? Featuring a replica of Anyanka's amulet and two fan-favorite stars, this photo will be out of this world!
+
+Specialty Tableau Photo with Charisma Carpenter and Emma Caulfield.
+
+$185 | Limited to 30`,
+    heroImage: '/images/specialty-tableaux/you-need-this-more-than-i-do.jpg',
+  },
+  {
+    ...sundayCsvEvent('sun-some-of-the-kids-at-my-camp', 'Some of the Kids at my Camp Put it Together For Me (J/Axe)', '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Get your hands on the actual hubcap axe used on camera by Gunn in Angel, the homemade weapon he carried through the demon-infested streets of Los Angeles. Stand against the forces of evil alongside J. August Richards with one of the most recognizable weapons in the Buffyverse — generously supplied by the legend himself.
+
+Specialty Tableau Photo with J August Richards.
+
+$85 | Limited to 30`,
+    heroImage: '/images/specialty-tableaux/some-of-the-kids-at-camp-put-it-together-for-me.jpg',
+  },
   { ...sundayCsvEvent('sun-d-hoffrans-fold', "D' Hoffran's Fold", '2026-06-14T10:00:00-07:00', '2026-06-14T10:30:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   sundayCsvEvent('sun-q-and-a', 'Q&A', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'main-auditorium', 'panel'),
   sundayCsvEvent('sun-for-beginners', 'for beginners', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'panel-room-b', 'workshop'),
-  sundayCsvEvent('sun-hang-with-me-and-mine', 'Hang with Me and Mine (Buffy Cast Photo)', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-hang-with-me-and-mine', 'Hang with Me and Mine (Buffy Cast Photo)', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Take your place in the iconic Sunnydale High courtyard alongside Amber Benson, Charisma Carpenter, Clare Kramer, Emma Caulfield, Iyari Limon, James C Leary, and Larry Bagby for a cast photo inspired by one of Cordelia's most memorable invitations. Share the frame with an incredible lineup of Buffy faves in a photo that can only happen at HellmouthCon.
+
+Specialty Tableau Cast Photo with Amber Benson, Charisma Carpenter, Clare Kramer, Emma Caulfield, Iyari Limon, James C Leary, and Larry Bagby.
+
+$480 | Limited to 15`,
+    heroImage: '/images/specialty-tableaux/hang-with-me-and-mine.jpg',
+  },
   sundayCsvEvent('sun-amy-acker', 'Amy Acker', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'photo-op-room', 'photo-op'),
   sundayCsvEvent('sun-j-august-stephanie', 'J.August, stephanie', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'autograph-alley', 'autograph'),
   { ...sundayCsvEvent('sun-curses', 'Curses', '2026-06-14T10:30:00-07:00', '2026-06-14T11:00:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
@@ -160,7 +242,15 @@ Fan Experience Brunch with Amber Benson, Clare Kramer, Doug Jones, Emma Caulfiel
   { ...sundayCsvEvent('sun-under-their-spell', 'Under Their Spell', '2026-06-14T12:00:00-07:00', '2026-06-14T12:30:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   sundayCsvEvent('sun-a-paying-gig', 'a Paying Gig', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'main-auditorium', 'panel'),
   sundayCsvEvent('sun-demons', 'Demons', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'panel-room-b', 'panel'),
-  sundayCsvEvent('sun-you-rock-clem', 'You Rock! (Clem)', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-you-rock-clem', 'You Rock! (Clem)', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `Hop into a red VW Bug with Clem himself and pose like you're going for a joyride with one of the most lovable dudes in Sunnydale. Complete with Clem makeup and a sendup to his iconic Beetle, this playful photo is pure fan-service in the best possible way.
+
+Specialty Tableau Photo with James C Leary.
+
+$85 | Limited to 30`,
+    heroImage: '/images/specialty-tableaux/you-rock.jpg',
+  },
   sundayCsvEvent('sun-amy-autograph', 'Amy', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'autograph-alley', 'autograph'),
   sundayCsvEvent('sun-sapphic-stories', 'Sapphic Stories', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'school-courtyard', 'meetup'),
   sundayCsvEvent('sun-rabbits-skin-conditions', 'Rabbits, Skin Conditions and School Spirit', '2026-06-14T13:00:00-07:00', '2026-06-14T14:00:00-07:00', 'main-auditorium', 'panel'),
@@ -183,10 +273,24 @@ Fan Experience Party Game with Amber Benson and Doug Jones.`,
   sundayCsvEvent('sun-iyari-photo-2', 'Iyari', '2026-06-14T14:00:00-07:00', '2026-06-14T14:30:00-07:00', 'autograph-alley', 'autograph'),
   sundayCsvEvent('sun-mine', 'Mine', '2026-06-14T14:30:00-07:00', '2026-06-14T15:00:00-07:00', 'main-auditorium', 'panel'),
   sundayCsvEvent('sun-bunny-wrksp', 'Bunny Wrksp', '2026-06-14T14:30:00-07:00', '2026-06-14T15:00:00-07:00', 'photo-op-room', 'photo-op'),
-  sundayCsvEvent('sun-lets-get-crazy-clare', 'Let\'s Get Crazy (Clare)', '2026-06-14T14:30:00-07:00', '2026-06-14T15:00:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-lets-get-crazy-clare', 'Let\'s Get Crazy (Clare)', '2026-06-14T14:30:00-07:00', '2026-06-14T15:00:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `A completely original Brain Suck-themed photo experience designed just for HellmouthCon. This custom setup has never been offered at any convention, anywhere.
+
+Specialty Tableau Photo with Clare Kramer.
+
+$85 | Limited to 30 each day`,
+    heroImage: '/images/specialty-tableaux/lets-get-crazy.jpg',
+  },
   { ...sundayCsvEvent('sun-the-gay-watchers', 'The Gay Watchers', '2026-06-14T14:30:00-07:00', '2026-06-14T15:00:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   sundayCsvEvent('sun-nerd-best', 'Nerd Best', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'panel-room-b', 'panel'),
-  sundayCsvEvent('sun-is-this-seat-taken', 'Is This Seat Taken? (C+A)', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'photo-op-room', 'photo-op'),
+  {
+    ...sundayCsvEvent('sun-is-this-seat-taken', 'Is This Seat Taken? (C+A)', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'photo-op-room', 'photo-op'),
+    description: `A one-of-a-kind pairing of Tara and Glory, brought together for the first time ever. Created exclusively for HellmouthCon and never offered at any other event.
+
+Specialty Tableau Photo with Clare Kramer and Amber Benson.`,
+    heroImage: '/images/specialty-tableaux/is-this-seat-taken.jpg',
+  },
   sundayCsvEvent('sun-julie-dj-autographs', 'Julie, DJ', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'autograph-alley', 'autograph'),
   { ...sundayCsvEvent('sun-counsel', 'counsel', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'school-courtyard', 'meetup'), hidden: true },
   sundayCsvEvent('sun-youre-just-a', 'Youre Just a', '2026-06-14T15:30:00-07:00', '2026-06-14T16:00:00-07:00', 'main-auditorium', 'panel'),

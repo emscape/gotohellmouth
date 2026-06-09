@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Bookmark, BookmarkCheck, Ticket, Crown } from 'lucide-react';
 import type { ScheduleEvent, Room } from '@/types';
-import { categoryLabel, categoryColors, formatTimeRange, roomAccentColors, cn } from '@/lib/utils';
+import { categoryLabel, categoryColors, formatTimeRange, roomAccentColors, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
 import { useMySchedule } from '@/hooks/useMySchedule';
 
 interface Props {
@@ -14,6 +14,7 @@ interface Props {
 export default function EventCard({ event, room }: Props) {
   const { isSaved, toggleSaved } = useMySchedule();
   const saved = isSaved(event.id);
+  const needsAdvanceTicket = hasAdvanceTicketRequirement(event);
 
   return (
     <div
@@ -45,9 +46,9 @@ export default function EventCard({ event, room }: Props) {
               <Crown size={10} /> VIP
             </span>
           )}
-          {event.requiresTicket && (
-            <span className="flex items-center gap-1 text-xs text-[var(--color-moon-400)]">
-              <Ticket size={11} /> Ticket required
+          {needsAdvanceTicket && (
+            <span className="flex items-center gap-1 rounded-full border border-[rgba(232,48,80,0.3)] bg-[rgba(232,48,80,0.08)] px-2 py-0.5 text-xs text-[var(--color-crimson-300)]">
+              <Ticket size={11} /> Advance Ticket
             </span>
           )}
         </div>

@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import type { EventCategory } from '@/types';
+import type { EventCategory, ScheduleEvent } from '@/types';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -16,6 +16,14 @@ export function formatTime(iso: string): string {
 
 export function formatTimeRange(start: string, end: string): string {
   return `${formatTime(start)} – ${formatTime(end)}`;
+}
+
+export function hasAdvanceTicketRequirement(event: ScheduleEvent): boolean {
+  return Boolean(
+    event.requiresTicket
+    || event.category === 'fan-experience'
+    || event.heroImage?.includes('/images/specialty-tableaux/'),
+  );
 }
 
 export const categoryLabel: Record<EventCategory, string> = {
