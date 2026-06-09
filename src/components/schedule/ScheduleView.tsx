@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { ScheduleEvent, Room, ConventionDay } from '@/types';
 import EventCard from './EventCard';
 import { cn } from '@/lib/utils';
@@ -15,9 +16,27 @@ interface Props {
   rooms: Room[];
 }
 
+function parseDay(value: string | null): ConventionDay {
+  return value === 'sunday' ? 'sunday' : 'saturday';
+}
+
 export default function ScheduleView({ events, rooms }: Props) {
-  const [activeDay, setActiveDay] = useState<ConventionDay>('saturday');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeDay, setActiveDay] = useState<ConventionDay>(() => parseDay(searchParams.get('day')));
   const [activeRoom, setActiveRoom] = useState<string>('all');
+
+  useEffect(() => {
+    const next = parseDay(searchParams.get('day'));
+    setActiveDay(prev => (prev === next ? prev : next));
+  }, [searchParams]);
+
+  const handleDayChange = (day: ConventionDay) => {
+    setActiveDay(day);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('day', day);
+    router.replace(`/schedule?${params.toString()}`, { scroll: false });
+  };
 
   const dayEvents = events.filter(e => e.day === activeDay);
   const filtered =
@@ -36,7 +55,7 @@ export default function ScheduleView({ events, rooms }: Props) {
         {days.map(day => (
           <button
             key={day.value}
-            onClick={() => setActiveDay(day.value)}
+            onClick={() => handleDayChange(day.value)}
             className={cn(
               'px-5 py-2.5 rounded font-display text-xs tracking-widest uppercase transition-colors',
               activeDay === day.value

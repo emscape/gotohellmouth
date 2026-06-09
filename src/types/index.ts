@@ -25,6 +25,7 @@ export interface ScheduleEvent {
   vipOnly?: boolean;
   tags?: string[];
   hidden?: boolean;
+  heroImage?: string;
 }
 
 export interface Guest {

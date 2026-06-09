@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { events } from '@/data/events';
 import { rooms } from '@/data/rooms';
 import ScheduleView from '@/components/schedule/ScheduleView';
@@ -22,7 +23,9 @@ export default function SchedulePage() {
         <p className="text-[var(--color-moon-200)] mb-2 text-sm">
           June 13–14, 2026 · Torrance High School · All times Pacific
         </p>
-        <ScheduleView events={publicScheduleEvents} rooms={rooms} />
+        <Suspense fallback={null}>
+          <ScheduleView events={publicScheduleEvents} rooms={rooms} />
+        </Suspense>
       </div>
     </div>
   );

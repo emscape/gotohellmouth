@@ -37,14 +37,14 @@ export default function HomePage() {
           FANDOM CHARITIES PRESENTS
         </p>
 
-        <div className="space-y-2">
-          <h1 className="font-display text-5xl leading-none text-[var(--color-hellmouth-50)] drop-shadow-[0_0_12px_rgba(255,255,255,0.06)] sm:text-7xl md:text-8xl">
-            HELLMOUTHCON
-          </h1>
-          <div className="font-display text-6xl leading-none text-[var(--color-crimson-500)] sm:text-7xl md:text-8xl">
-            2026
-          </div>
-        </div>
+        <h1 className="mx-auto w-full max-w-xs sm:max-w-md md:max-w-2xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hellmouthcon-2026-logo.png"
+            alt="HellmouthCon 2026"
+            className="h-auto w-full"
+          />
+        </h1>
 
         <p className="mt-8 text-lg text-[var(--color-hellmouth-100)] sm:text-xl">
           A Buffy the Vampire Slayer Fan Convention

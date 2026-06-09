@@ -49,7 +49,7 @@ export default async function EventDetailPage({
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <Link
-        href="/schedule"
+        href={`/schedule?day=${event.day}`}
         className="flex items-center gap-1.5 text-sm text-[var(--color-moon-400)] hover:text-[var(--color-crimson-300)] transition-colors mb-8"
       >
         <ArrowLeft size={15} /> Back to Schedule
@@ -75,6 +75,15 @@ export default async function EventDetailPage({
         {event.title}
       </h1>
 
+      {event.heroImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={event.heroImage}
+          alt={event.title}
+          className="w-full h-auto rounded-lg border border-[var(--border)] mb-6"
+        />
+      )}
+
       <div className="flex flex-col gap-3 mb-6 text-sm text-[var(--color-moon-200)]">
         <div className="flex items-center gap-2">
           <Clock size={15} className="text-[var(--color-moon-400)] shrink-0" />
@@ -88,9 +97,11 @@ export default async function EventDetailPage({
         )}
       </div>
 
-      <p className="text-[var(--color-hellmouth-200)] leading-relaxed mb-8">
-        {event.description}
-      </p>
+      <div className="text-[var(--color-hellmouth-200)] leading-relaxed mb-8 flex flex-col gap-4">
+        {event.description.split(/\n\s*\n/).map((para, i) => (
+          <p key={i}>{para}</p>
+        ))}
+      </div>
 
       <SaveButton eventId={event.id} eventTitle={event.title} />
 
