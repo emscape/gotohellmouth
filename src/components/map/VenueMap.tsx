@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import type { Room } from '@/types';
 import { cn } from '@/lib/utils';
 
 interface Props {
   rooms: Room[];
+  activeRoomId: string | null;
+  onActiveRoomChange: (roomId: string | null) => void;
 }
 
 // Overlay paths traced via /calibrate over the official venue-map.png.
@@ -45,12 +46,14 @@ const roomFillsActive: Record<string, string> = {
   'room-courtyard':        '#14532d',
 };
 
-export default function VenueMap({ rooms }: Props) {
-  const [activeRoomId, setActiveRoomId] = useState<string | null>(null);
-
+export default function VenueMap({ rooms, activeRoomId, onActiveRoomChange }: Props) {
   const activeRoom = activeRoomId
     ? rooms.find(r => r.id === activeRoomId)
     : null;
+
+  function toggleRoom(roomId: string) {
+    onActiveRoomChange(activeRoomId === roomId ? null : roomId);
+  }
 
   return (
     <div>
@@ -88,12 +91,10 @@ export default function VenueMap({ rooms }: Props) {
                 strokeWidth={isActive ? 2.5 : 1.5}
                 strokeDasharray={isActive ? undefined : '5 3'}
                 className="cursor-pointer transition-all duration-150"
-                onClick={() =>
-                  setActiveRoomId(prev => (prev === room.id ? null : room.id))
-                }
+                onClick={() => toggleRoom(room.id)}
                 onKeyDown={e => {
                   if (e.key === 'Enter' || e.key === ' ') {
-                    setActiveRoomId(prev => (prev === room.id ? null : room.id));
+                    toggleRoom(room.id);
                   }
                 }}
                 role="button"
@@ -143,9 +144,7 @@ export default function VenueMap({ rooms }: Props) {
           {rooms.map(room => (
             <button
               key={room.id}
-              onClick={() =>
-                setActiveRoomId(prev => (prev === room.id ? null : room.id))
-              }
+              onClick={() => toggleRoom(room.id)}
               className={cn(
                 'flex items-center gap-1.5 text-xs px-3 py-1.5 rounded border transition-colors',
                 activeRoomId === room.id

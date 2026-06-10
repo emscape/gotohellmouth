@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
 import type { Room } from '@/types';
 import VenueMap from './VenueMap';
 import { cn } from '@/lib/utils';
@@ -23,7 +24,13 @@ interface Props {
 }
 
 export default function MapTabs({ rooms }: Props) {
+  const searchParams = useSearchParams();
   const [tab, setTab] = useState<Tab>('schematic');
+  const [activeRoomId, setActiveRoomId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActiveRoomId(searchParams.get('room'));
+  }, [searchParams]);
 
   return (
     <div>
@@ -40,7 +47,9 @@ export default function MapTabs({ rooms }: Props) {
         </TabButton>
       </div>
 
-      {tab === 'schematic' && <VenueMap rooms={rooms} />}
+      {tab === 'schematic' && (
+        <VenueMap rooms={rooms} activeRoomId={activeRoomId} onActiveRoomChange={setActiveRoomId} />
+      )}
 
       {tab === 'campus' && (
         <div>
@@ -51,7 +60,7 @@ export default function MapTabs({ rooms }: Props) {
               Building positions are approximate — use real on-site GPS coordinates for precision.
             </span>
           </p>
-          <CampusMap rooms={rooms} />
+          <CampusMap rooms={rooms} activeRoomId={activeRoomId} onActiveRoomChange={setActiveRoomId} />
         </div>
       )}
     </div>

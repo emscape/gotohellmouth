@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, Clock, MapPin, Ticket, Crown } from 'lucide-react';
 import { events } from '@/data/events';
 import { rooms, guests as allGuests } from '@/data';
-import { categoryLabel, categoryColors, formatTimeRange, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
+import { categoryLabel, categoryColors, formatEventTime, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
 import SaveButton from '@/components/schedule/SaveButton';
 
 export function generateStaticParams() {
@@ -44,6 +44,7 @@ export default async function EventDetailPage({
     .map(id => allGuests.find(g => g.id === id))
     .filter(Boolean);
   const needsAdvanceTicket = hasAdvanceTicketRequirement(event);
+  const description = event.description.trim();
 
   const dayLabel = event.day === 'saturday' ? 'Saturday, June 13' : 'Sunday, June 14';
 
@@ -88,12 +89,17 @@ export default async function EventDetailPage({
       <div className="flex flex-col gap-3 mb-6 text-sm text-[var(--color-moon-200)]">
         <div className="flex items-center gap-2">
           <Clock size={15} className="text-[var(--color-moon-400)] shrink-0" />
-          {dayLabel} · {formatTimeRange(event.startTime, event.endTime)}
+          {dayLabel} · {formatEventTime(event)}
         </div>
         {room && (
           <div className="flex items-center gap-2">
             <MapPin size={15} className="text-[var(--color-moon-400)] shrink-0" />
-            {room.name}
+            <Link
+              href={`/map?room=${room.id}`}
+              className="hover:text-[var(--color-crimson-300)] underline-offset-2 hover:underline transition-colors"
+            >
+              {room.name}
+            </Link>
           </div>
         )}
       </div>
@@ -105,11 +111,13 @@ export default async function EventDetailPage({
         </div>
       )}
 
-      <div className="text-[var(--color-hellmouth-200)] leading-relaxed mb-8 flex flex-col gap-4">
-        {event.description.split(/\n\s*\n/).map((para, i) => (
-          <p key={i}>{para}</p>
-        ))}
-      </div>
+      {description && (
+        <div className="text-[var(--color-hellmouth-200)] leading-relaxed mb-8 flex flex-col gap-4">
+          {description.split(/\n\s*\n/).map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
+      )}
 
       <SaveButton eventId={event.id} eventTitle={event.title} />
 

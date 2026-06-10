@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 
 interface Props {
   rooms: Room[];
+  activeRoomId: string | null;
+  onActiveRoomChange: (roomId: string | null) => void;
 }
 
 // Polygon fill colors per room (semi-transparent for map overlay)
@@ -17,7 +19,10 @@ const polygonColors: Record<string, string> = {
   'panel-room-b':     '#3730a3',
   'autograph-alley':  '#881337',
   'photo-op-room':    '#5b21b6',
+  'outside-photo-studio': '#1e40af',
+  'secondary-courtyard': '#a21caf',
   'outdoor-courtyard':'#14532d',
+  'outdoor-stage':    '#a21caf',
   'zone-b-party':     '#a21caf',
 };
 
@@ -28,13 +33,16 @@ const polygonActiveColors: Record<string, string> = {
   'panel-room-b':     '#818cf8',
   'autograph-alley':  '#fb7185',
   'photo-op-room':    '#a78bfa',
+  'outside-photo-studio': '#60a5fa',
+  'secondary-courtyard': '#d8b4fe',
   'outdoor-courtyard':'#34d399',
+  'outdoor-stage':    '#e879f9',
   'zone-b-party':     '#d8b4fe',
 };
 
 type GeolocationStatus = 'idle' | 'requesting' | 'active' | 'denied' | 'unavailable';
 
-export default function CampusMap({ rooms }: Props) {
+export default function CampusMap({ rooms, activeRoomId, onActiveRoomChange }: Props) {
   const mapRef = useRef<HTMLDivElement>(null);
   const leafletMapRef = useRef<import('leaflet').Map | null>(null);
   const polygonRefs = useRef<Map<string, import('leaflet').Polygon>>(new Map());
@@ -42,12 +50,15 @@ export default function CampusMap({ rooms }: Props) {
   const userMarkerRef = useRef<import('leaflet').CircleMarker | null>(null);
   const directionLineRef = useRef<import('leaflet').Polyline | null>(null);
 
-  const [activeRoomId, setActiveRoomId] = useState<string | null>(null);
   const [geoStatus, setGeoStatus] = useState<GeolocationStatus>('idle');
   const [userCoords, setUserCoords] = useState<[number, number] | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
 
   const activeRoom = activeRoomId ? rooms.find(r => r.id === activeRoomId) : null;
+
+  function toggleRoom(roomId: string) {
+    onActiveRoomChange(activeRoomId === roomId ? null : roomId);
+  }
 
   // Initialize Leaflet map once
   useEffect(() => {
@@ -129,7 +140,7 @@ export default function CampusMap({ rooms }: Props) {
             interactive: true,
           }).addTo(map);
           polygon.on('click', () => {
-            setActiveRoomId(prev => (prev === room.id ? null : room.id));
+            toggleRoom(room.id);
           });
           polygons.set(room.id, polygon);
           room.polygonCoords.forEach(c => allLatLngs.push(c));
@@ -138,7 +149,7 @@ export default function CampusMap({ rooms }: Props) {
         const marker = L.marker(room.entranceCoords, { icon: labelIcon, interactive: true })
           .addTo(map);
         marker.on('click', () => {
-          setActiveRoomId(prev => (prev === room.id ? null : room.id));
+          toggleRoom(room.id);
         });
         markers.set(room.id, marker);
         allLatLngs.push(room.entranceCoords);
@@ -198,6 +209,11 @@ export default function CampusMap({ rooms }: Props) {
       }
     });
   }, [activeRoomId, userCoords, activeRoom, isMapReady]);
+
+  useEffect(() => {
+    if (!isMapReady || !activeRoom) return;
+    panToRoom(activeRoom);
+  }, [activeRoom, isMapReady]);
 
   // Update user location marker
   useEffect(() => {
@@ -408,7 +424,7 @@ export default function CampusMap({ rooms }: Props) {
             <button
               key={room.id}
               onClick={() => {
-                setActiveRoomId(prev => (prev === room.id ? null : room.id));
+                toggleRoom(room.id);
                 if (room.id !== activeRoomId) panToRoom(room);
               }}
               className={cn(

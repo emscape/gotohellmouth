@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Bookmark, BookmarkCheck, Ticket, Crown } from 'lucide-react';
 import type { ScheduleEvent, Room } from '@/types';
-import { categoryLabel, categoryColors, formatTimeRange, roomAccentColors, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
+import { categoryLabel, categoryColors, formatEventTime, roomAccentColors, hasAdvanceTicketRequirement, cn } from '@/lib/utils';
 import { useMySchedule } from '@/hooks/useMySchedule';
 
 interface Props {
@@ -15,6 +15,9 @@ export default function EventCard({ event, room }: Props) {
   const { isSaved, toggleSaved } = useMySchedule();
   const saved = isSaved(event.id);
   const needsAdvanceTicket = hasAdvanceTicketRequirement(event);
+  const guestPhotoImage = event.category === 'photo-op' && event.heroImage?.includes('/images/photo-ops/')
+    ? event.heroImage
+    : undefined;
 
   return (
     <div
@@ -27,8 +30,17 @@ export default function EventCard({ event, room }: Props) {
     >
       {/* Time column */}
       <div className="w-24 shrink-0 text-xs text-[var(--color-moon-400)] pt-0.5 tabular-nums">
-        {formatTimeRange(event.startTime, event.endTime)}
+        {formatEventTime(event)}
       </div>
+
+      {guestPhotoImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={guestPhotoImage}
+          alt={event.title}
+          className="hidden h-16 w-16 shrink-0 rounded-md border border-[var(--border)] object-cover sm:block"
+        />
+      )}
 
       {/* Content */}
       <div className="flex-1 min-w-0">
@@ -61,7 +73,12 @@ export default function EventCard({ event, room }: Props) {
         </Link>
 
         {room && (
-          <p className="text-xs text-[var(--color-moon-400)]">{room.name}</p>
+          <Link
+            href={`/map?room=${room.id}`}
+            className="text-xs text-[var(--color-moon-400)] hover:text-[var(--color-crimson-300)] underline-offset-2 hover:underline transition-colors"
+          >
+            {room.name}
+          </Link>
         )}
       </div>
 

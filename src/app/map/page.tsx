@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import MapTabs from '@/components/map/MapTabs';
 import { rooms } from '@/data/rooms';
 import HeaderBar from '@/components/site/HeaderBar';
@@ -19,7 +20,9 @@ export default function MapPage() {
         <p className="text-[var(--color-moon-200)] mb-8 text-sm">
           Torrance High School · 2200 W Carson St, Torrance CA · Tap a room for details.
         </p>
-        <MapTabs rooms={rooms} />
+        <Suspense fallback={null}>
+          <MapTabs rooms={rooms} />
+        </Suspense>
       </div>
     </div>
   );

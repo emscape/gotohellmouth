@@ -18,6 +18,12 @@ export function formatTimeRange(start: string, end: string): string {
   return `${formatTime(start)} – ${formatTime(end)}`;
 }
 
+export function formatEventTime(event: Pick<ScheduleEvent, 'category' | 'startTime' | 'endTime'>): string {
+  return event.category === 'photo-op' || event.category === 'autograph'
+    ? formatTime(event.startTime)
+    : formatTimeRange(event.startTime, event.endTime);
+}
+
 export function hasAdvanceTicketRequirement(event: ScheduleEvent): boolean {
   return Boolean(
     event.requiresTicket
@@ -57,8 +63,11 @@ export const roomAccentColors: Record<string, string> = {
   'panel-room-a': 'bg-emerald-400 text-slate-950',
   'panel-room-b': 'bg-fuchsia-400 text-slate-950',
   'photo-op-room': 'bg-violet-400 text-white',
+  'outside-photo-studio': 'bg-violet-300 text-slate-950',
   registration: 'bg-blue-400 text-slate-950',
   'school-courtyard': 'bg-lime-400 text-slate-950',
+  'secondary-courtyard': 'bg-yellow-400 text-slate-950',
   'outdoor-courtyard': 'bg-green-400 text-slate-950',
+  'outdoor-stage': 'bg-fuchsia-400 text-slate-950',
   'zone-b-party': 'bg-yellow-400 text-slate-950',
 };
