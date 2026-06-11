@@ -83,7 +83,7 @@ export default function EventCard({ event, room }: Props) {
             href={`/map?room=${room.id}`}
             className="text-xs text-[var(--color-moon-400)] hover:text-[var(--color-crimson-300)] underline-offset-2 hover:underline transition-colors"
           >
-            {room.name}
+            {event.displayLocationLabel ?? room.name}
           </Link>
         )}
       </div>

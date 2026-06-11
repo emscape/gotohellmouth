@@ -81,9 +81,15 @@ Format:
 • Two hosts (comedians, with audience interactions)
 • Structured segments and improvisation
 • Audience Q&A / “share your demon” moment`,
-  'sun-corp-dance': `Step outside for a fierce, high-energy dance performance. Bringing sharp, synchronized choreography, heavy alternative beats, and an undeniable raw edge directly to the Sunnydale High, The Corp Dance Crew delivers an unforgettable showcase set to a pulse-pounding soundtrack. Stay on your guard for anything lurking in the shadows, and catch this exclusive Sunday pop-up showcase live.
+  'sun-corp-dance': `Step outside for a fierce, high-energy dance performance. Bringing sharp, synchronized choreography, heavy alternative beats, and an undeniable raw edge directly to the Sunnydale High, The Corps Dance Crew delivers an unforgettable showcase set to a pulse-pounding soundtrack. Stay on your guard for anything lurking in the shadows, and catch this exclusive Sunday pop-up showcase live.
 
-Presented by Corp Dance Crew`,
+Presented by Corps Dance Crew`,
+  'sun-corp-dance-courtyard': `Step outside for a fierce, high-energy dance performance. Bringing sharp, synchronized choreography, heavy alternative beats, and an undeniable raw edge directly to the Sunnydale High, The Corps Dance Crew delivers an unforgettable showcase set to a pulse-pounding soundtrack. Stay on your guard for anything lurking in the shadows, and catch this exclusive Sunday pop-up showcase live.
+
+Presented by Corps Dance Crew`,
+  'sun-corp-dance-entrance': `Step outside for a fierce, high-energy dance performance. Bringing sharp, synchronized choreography, heavy alternative beats, and an undeniable raw edge directly to the Sunnydale High, The Corps Dance Crew delivers an unforgettable showcase set to a pulse-pounding soundtrack. Stay on your guard for anything lurking in the shadows, and catch this exclusive Sunday pop-up showcase live.
+
+Presented by Corps Dance Crew`,
   'sun-d-hoffrans-fold': `Tired of letting people walk all over you? Ready to trade your mortal dread for a glamorous coordinate in a hell dimension and a fabulous set of horns? Join Thes'Helia, a charmingly ruthless vengeance demon from D'Hoffryn’s elite circle, for a wickedly entertaining workshop on the sweet art of getting even. This interactive session dives into history’s most satisfying acts of retribution, breaks down how to translate a mortal's raw spoken pain into the perfect, binding curse, and reveals how you can climb the ranks of D'Hoffryn's elite stable of retributive professionals (and earn your very own cursed talisman). Best of all, you will join forces with fellow attendees to safely channel and cast a localized group curse live. It's a wildly entertaining party where getting mad is good, but getting even is infinitely more fun!
 
 Presented by Thes'Helia, Sworn Sister of D'Hoffryn’s Fold & Vengeance Demon of Arashmahar`,

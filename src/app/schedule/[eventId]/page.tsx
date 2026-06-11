@@ -98,7 +98,7 @@ export default async function EventDetailPage({
               href={`/map?room=${room.id}`}
               className="hover:text-[var(--color-crimson-300)] underline-offset-2 hover:underline transition-colors"
             >
-              {room.name}
+              {event.displayLocationLabel ?? room.name}
             </Link>
           </div>
         )}

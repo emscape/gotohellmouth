@@ -62,12 +62,14 @@ export default function ScheduleView({ events, rooms }: Props) {
     }
   }, [activeType, availableCategories]);
 
-  const filtered = dayEvents.filter(event => {
-    const roomMatches = activeRoom === 'all' || event.roomId === activeRoom;
-    const typeMatches = activeType === 'all' || event.category === activeType;
+  const filtered = dayEvents
+    .filter(event => {
+      const roomMatches = activeRoom === 'all' || event.roomId === activeRoom;
+      const typeMatches = activeType === 'all' || event.category === activeType;
 
-    return roomMatches && typeMatches;
-  });
+      return roomMatches && typeMatches;
+    })
+    .sort((a, b) => a.startTime.localeCompare(b.startTime) || a.title.localeCompare(b.title));
 
   const roomsWithEvents = rooms.filter(r =>
     events.some(e => e.roomId === r.id),

@@ -26,6 +26,7 @@ export interface ScheduleEvent {
   tags?: string[];
   hidden?: boolean;
   heroImage?: string;
+  displayLocationLabel?: string;
 }
 
 export interface Guest {

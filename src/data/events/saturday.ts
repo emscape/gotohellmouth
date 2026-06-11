@@ -72,6 +72,7 @@ Specialty Tableau Photo with Charisma Carpenter and Mark Lutz.`,
     heroImage: '/images/specialty-tableaux/they-made-me-ruler.jpg',
   },
   { ...csvEvent('sat-james', 'James Leary', '2026-06-13T12:30:00-07:00', '2026-06-13T13:00:00-07:00', 'photo-op-room', 'photo-op'), heroImage: '/images/photo-ops/james-leary.jpg' },
+  { ...csvEvent('sat-emma-photo', 'Emma Caulfield', '2026-06-13T13:00:00-07:00', '2026-06-13T13:30:00-07:00', 'photo-op-room', 'photo-op'), heroImage: '/images/photo-ops/emma-caulfield.jpg' },
   csvEvent('sat-casting-call', 'Casting Call', '2026-06-13T13:00:00-07:00', '2026-06-13T13:45:00-07:00', 'main-auditorium', 'panel'),
   csvEvent('sat-bring-back-firefy', 'Bring Back Firefly!', '2026-06-13T13:00:00-07:00', '2026-06-13T13:45:00-07:00', 'panel-room-b', 'panel'),
   {
