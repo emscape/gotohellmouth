@@ -5,7 +5,7 @@ export type EventCategory =
   | 'autograph'
   | 'fan-experience'
   | 'contest'
-  | 'meetup'
+  | 'immersive-entertainment'
   | 'vendor'
   | 'mixer';
 

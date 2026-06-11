@@ -39,7 +39,7 @@ export const categoryLabel: Record<EventCategory, string> = {
   autograph: 'Autograph',
   'fan-experience': 'Fan Experience',
   contest: 'Contest',
-  meetup: 'Meetup',
+  'immersive-entertainment': 'Immersive Entertainment',
   vendor: 'Vendor Hall',
   mixer: 'Mixer',
 };
@@ -51,7 +51,7 @@ export const categoryColors: Record<EventCategory, string> = {
   autograph: 'bg-rose-800 text-rose-100',
   'fan-experience': 'bg-indigo-900 text-indigo-100',
   contest: 'bg-amber-800 text-amber-100',
-  meetup: 'bg-emerald-900 text-emerald-100',
+  'immersive-entertainment': 'bg-emerald-900 text-emerald-100',
   vendor: 'bg-amber-900 text-amber-100',
   mixer: 'bg-yellow-800 text-yellow-100',
 };

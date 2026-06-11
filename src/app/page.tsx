@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HeaderBar from '@/components/site/HeaderBar';
+import virtualProgramCover from '../../guidance/Virtual Program Cover Book - 2.jpg';
 
 const eventStart = new Date('2026-06-13T10:00:00-07:00');
 
@@ -40,8 +41,8 @@ export default function HomePage() {
         <h1 className="mx-auto w-full max-w-xs sm:max-w-md md:max-w-2xl">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hellmouthcon-2026-logo.png"
-            alt="HellmouthCon 2026"
+            src={virtualProgramCover.src}
+            alt="HellmouthCon 2026 virtual program cover"
             className="h-auto w-full"
           />
         </h1>

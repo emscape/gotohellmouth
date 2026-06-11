@@ -17,7 +17,7 @@ const categoryOrder: EventCategory[] = [
   'photo-op',
   'autograph',
   'workshop',
-  'meetup',
+  'immersive-entertainment',
   'mixer',
   'contest',
   'vendor',
