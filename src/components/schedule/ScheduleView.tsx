@@ -2,13 +2,25 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import type { ScheduleEvent, Room, ConventionDay } from '@/types';
+import type { ScheduleEvent, Room, ConventionDay, EventCategory } from '@/types';
 import EventCard from './EventCard';
-import { cn } from '@/lib/utils';
+import { categoryLabel, cn } from '@/lib/utils';
 
 const days: { value: ConventionDay; label: string; date: string }[] = [
   { value: 'saturday', label: 'Saturday', date: 'June 13' },
   { value: 'sunday', label: 'Sunday', date: 'June 14' },
+];
+
+const categoryOrder: EventCategory[] = [
+  'panel',
+  'fan-experience',
+  'photo-op',
+  'autograph',
+  'workshop',
+  'meetup',
+  'mixer',
+  'contest',
+  'vendor',
 ];
 
 interface Props {
@@ -25,6 +37,7 @@ export default function ScheduleView({ events, rooms }: Props) {
   const searchParams = useSearchParams();
   const [activeDay, setActiveDay] = useState<ConventionDay>(() => parseDay(searchParams.get('day')));
   const [activeRoom, setActiveRoom] = useState<string>('all');
+  const [activeType, setActiveType] = useState<EventCategory | 'all'>('all');
 
   useEffect(() => {
     const next = parseDay(searchParams.get('day'));
@@ -39,10 +52,22 @@ export default function ScheduleView({ events, rooms }: Props) {
   };
 
   const dayEvents = events.filter(e => e.day === activeDay);
-  const filtered =
-    activeRoom === 'all'
-      ? dayEvents
-      : dayEvents.filter(e => e.roomId === activeRoom);
+  const availableCategories = categoryOrder.filter(category =>
+    dayEvents.some(event => event.category === category),
+  );
+
+  useEffect(() => {
+    if (activeType !== 'all' && !availableCategories.includes(activeType)) {
+      setActiveType('all');
+    }
+  }, [activeType, availableCategories]);
+
+  const filtered = dayEvents.filter(event => {
+    const roomMatches = activeRoom === 'all' || event.roomId === activeRoom;
+    const typeMatches = activeType === 'all' || event.category === activeType;
+
+    return roomMatches && typeMatches;
+  });
 
   const roomsWithEvents = rooms.filter(r =>
     events.some(e => e.roomId === r.id),
@@ -72,7 +97,7 @@ export default function ScheduleView({ events, rooms }: Props) {
       </div>
 
       {/* Room filter */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-3">
         <button
           onClick={() => setActiveRoom('all')}
           className={cn(
@@ -96,6 +121,35 @@ export default function ScheduleView({ events, rooms }: Props) {
             )}
           >
             {room.shortName}
+          </button>
+        ))}
+      </div>
+
+      {/* Type filter */}
+      <div className="flex flex-wrap gap-2 mb-8">
+        <button
+          onClick={() => setActiveType('all')}
+          className={cn(
+            'px-3 py-1 rounded text-xs transition-colors',
+            activeType === 'all'
+              ? 'bg-[var(--color-hellmouth-600)] text-white'
+              : 'border border-[var(--border)] text-[var(--color-moon-200)] hover:border-[var(--color-hellmouth-600)]',
+          )}
+        >
+          All Types
+        </button>
+        {availableCategories.map(category => (
+          <button
+            key={category}
+            onClick={() => setActiveType(category)}
+            className={cn(
+              'px-3 py-1 rounded text-xs transition-colors',
+              activeType === category
+                ? 'bg-[var(--color-hellmouth-600)] text-white'
+                : 'border border-[var(--border)] text-[var(--color-moon-200)] hover:border-[var(--color-hellmouth-600)]',
+            )}
+          >
+            {categoryLabel[category]}
           </button>
         ))}
       </div>
