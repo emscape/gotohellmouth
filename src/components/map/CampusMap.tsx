@@ -20,7 +20,7 @@ const polygonColors: Record<string, string> = {
   'autograph-alley':  '#881337',
   'photo-op-room':    '#5b21b6',
   'outside-photo-studio': '#1e40af',
-  'secondary-courtyard': '#a21caf',
+  'secondary-courtyard': '#065f46',
   'outdoor-courtyard':'#14532d',
   'outdoor-stage':    '#a21caf',
   'zone-b-party':     '#a21caf',
@@ -34,11 +34,13 @@ const polygonActiveColors: Record<string, string> = {
   'autograph-alley':  '#fb7185',
   'photo-op-room':    '#a78bfa',
   'outside-photo-studio': '#60a5fa',
-  'secondary-courtyard': '#d8b4fe',
+  'secondary-courtyard': '#34d399',
   'outdoor-courtyard':'#34d399',
   'outdoor-stage':    '#e879f9',
   'zone-b-party':     '#d8b4fe',
 };
+
+const roomsWithoutCampusLabels = new Set(['outside-photo-studio']);
 
 type GeolocationStatus = 'idle' | 'requesting' | 'active' | 'denied' | 'unavailable';
 
@@ -146,12 +148,14 @@ export default function CampusMap({ rooms, activeRoomId, onActiveRoomChange }: P
           room.polygonCoords.forEach(c => allLatLngs.push(c));
         }
 
-        const marker = L.marker(room.entranceCoords, { icon: labelIcon, interactive: true })
-          .addTo(map);
-        marker.on('click', () => {
-          toggleRoom(room.id);
-        });
-        markers.set(room.id, marker);
+        if (!roomsWithoutCampusLabels.has(room.id)) {
+          const marker = L.marker(room.entranceCoords, { icon: labelIcon, interactive: true })
+            .addTo(map);
+          marker.on('click', () => {
+            toggleRoom(room.id);
+          });
+          markers.set(room.id, marker);
+        }
         allLatLngs.push(room.entranceCoords);
       });
 

@@ -66,7 +66,7 @@ export const roomAccentColors: Record<string, string> = {
   'outside-photo-studio': 'bg-violet-300 text-slate-950',
   registration: 'bg-blue-400 text-slate-950',
   'school-courtyard': 'bg-lime-400 text-slate-950',
-  'secondary-courtyard': 'bg-yellow-400 text-slate-950',
+  'secondary-courtyard': 'bg-emerald-400 text-slate-950',
   'outdoor-courtyard': 'bg-green-400 text-slate-950',
   'outdoor-stage': 'bg-fuchsia-400 text-slate-950',
   'zone-b-party': 'bg-yellow-400 text-slate-950',

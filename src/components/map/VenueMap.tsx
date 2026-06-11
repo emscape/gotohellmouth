@@ -28,6 +28,7 @@ const roomPaths: Record<string, string> = {
   'room-auditorium':  'M 477 254 L 535 255 L 537 278 L 476 278 Z',
   // School courtyard (outdoor area near Bldg A)
   'room-school-courtyard': 'M 638 259 L 637 285 L 677 287 L 674 260 Z',
+  'room-secondary-courtyard': 'M 689 239 L 724 239 L 724 293 L 690 294 Z',
   // Zone A — Double Meat Palace (outdoor food trucks)
   'room-courtyard':   'M 519 129 L 518 170 L 607 167 L 604 127 Z',
 };
@@ -43,6 +44,7 @@ const roomFillsActive: Record<string, string> = {
   'room-zone-b':           '#a21caf',
   'room-auditorium':       '#991b1b',
   'room-school-courtyard': '#065f46',
+  'room-secondary-courtyard': '#065f46',
   'room-courtyard':        '#14532d',
 };
 
