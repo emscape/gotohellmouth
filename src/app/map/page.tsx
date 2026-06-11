@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import MapTabs from '@/components/map/MapTabs';
 import { rooms } from '@/data/rooms';
 import HeaderBar from '@/components/site/HeaderBar';
+import CommunityLinks from '@/components/site/CommunityLinks';
 
 export const metadata: Metadata = {
   title: 'Venue Map — HellmouthCon 2026',
@@ -23,6 +24,7 @@ export default function MapPage() {
         <Suspense fallback={null}>
           <MapTabs rooms={rooms} />
         </Suspense>
+        <CommunityLinks />
       </div>
     </div>
   );
