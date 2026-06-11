@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HeaderBar from '@/components/site/HeaderBar';
-import virtualProgramCover from '../../guidance/Virtual Program Cover Book - 2.jpg';
 
 const eventStart = new Date('2026-06-13T10:00:00-07:00');
 
@@ -41,11 +40,24 @@ export default function HomePage() {
         <h1 className="mx-auto w-full max-w-xs sm:max-w-md md:max-w-2xl">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={virtualProgramCover.src}
+            src="/virtual-program-cover-book-2.jpg"
             alt="HellmouthCon 2026 virtual program cover"
             className="h-auto w-full"
           />
         </h1>
+
+        <p className="mt-4 max-w-2xl text-[0.65rem] leading-relaxed text-[var(--color-moon-400)] sm:text-xs">
+          Our longtime friend and supporter Georges Jeanty created and provided the gorgeous cover art for our
+          Interactive Schedule and Program Guide. Thank you, Georges! We miss you this year!{' '}
+          <a
+            href="https://kabalounge.com"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--color-moon-300)] underline decoration-[rgba(232,48,80,0.35)] underline-offset-2 hover:text-[var(--color-crimson-300)]"
+          >
+            Visit kabalounge.com for more of Georges&rsquo; fantastic work.
+          </a>
+        </p>
 
         <p className="mt-8 text-lg text-[var(--color-hellmouth-100)] sm:text-xl">
           A Buffy the Vampire Slayer Fan Convention
