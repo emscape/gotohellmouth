@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import HeaderBar from '@/components/site/HeaderBar';
+import CommunityLinks from '@/components/site/CommunityLinks';
 
 const eventStart = new Date('2026-06-13T10:00:00-07:00');
 
@@ -101,6 +102,8 @@ export default function HomePage() {
             View Schedule
           </Link>
         </div>
+
+        <CommunityLinks />
       </main>
     </div>
   );

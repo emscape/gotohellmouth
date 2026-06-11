@@ -4,6 +4,7 @@ import { events } from '@/data/events';
 import { rooms } from '@/data/rooms';
 import ScheduleView from '@/components/schedule/ScheduleView';
 import HeaderBar from '@/components/site/HeaderBar';
+import CommunityLinks from '@/components/site/CommunityLinks';
 
 export const metadata: Metadata = {
   title: 'Schedule — HellmouthCon 2026',
@@ -26,6 +27,7 @@ export default function SchedulePage() {
         <Suspense fallback={null}>
           <ScheduleView events={publicScheduleEvents} rooms={rooms} />
         </Suspense>
+        <CommunityLinks />
       </div>
     </div>
   );

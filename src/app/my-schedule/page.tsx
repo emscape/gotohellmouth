@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import HeaderBar from '@/components/site/HeaderBar';
+import CommunityLinks from '@/components/site/CommunityLinks';
 import EventCard from '@/components/schedule/EventCard';
 import { events } from '@/data/events';
 import { rooms } from '@/data/rooms';
@@ -124,6 +125,8 @@ export default function MySchedulePage() {
             })}
           </div>
         )}
+
+        <CommunityLinks />
       </main>
     </div>
   );
