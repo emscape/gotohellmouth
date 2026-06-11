@@ -107,7 +107,6 @@ Specialty Tableau Photo with Clare Kramer and Amber Benson.`,
   csvEvent('sat-larry-autograph-afternoon', 'Larry Bagby', '2026-06-13T14:30:00-07:00', '2026-06-13T15:30:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-iyari-autograph-afternoon', 'Iyari Limon', '2026-06-13T14:30:00-07:00', '2026-06-13T15:30:00-07:00', 'autograph-alley', 'autograph'),
   csvEvent('sat-clare-chats-w-friends', 'Friends of the Buffyverse!', '2026-06-13T15:15:00-07:00', '2026-06-13T16:00:00-07:00', 'main-auditorium', 'panel'),
-  csvEvent('sat-international-buffy-day', 'International Buffy Day', '2026-06-13T15:00:00-07:00', '2026-06-13T16:00:00-07:00', 'panel-room-b', 'panel'),
   {
     ...csvEvent('sat-poetry-for-demons', 'Poetry for Demons', '2026-06-13T15:00:00-07:00', '2026-06-13T16:00:00-07:00', 'panel-room-a', 'fan-experience'),
     description: `After Sunnydale collapsed, Clem and Groo got a job team-teaching English to demons… obviously. You're a demon enrolled in their class, and today's topic: Episode Titles! Your instructors know better than anyone that the world likes its demons monosyllabic, so no two syllable words are allowed! And if he hears one, your teacher just might express some disappointment through the universal language of punishment. This "Poetry for Neanderthals"-inspired Fan Experience will be a class act.
