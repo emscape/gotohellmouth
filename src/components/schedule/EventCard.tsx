@@ -65,12 +65,18 @@ export default function EventCard({ event, room }: Props) {
           )}
         </div>
 
-        <Link
-          href={`/schedule/${event.id}`}
-          className="block font-semibold text-[var(--color-hellmouth-50)] hover:text-[var(--color-crimson-300)] transition-colors mb-1 leading-snug"
-        >
-          {event.title}
-        </Link>
+        {event.category === 'autograph' ? (
+          <p className="mb-1 block font-semibold leading-snug text-[var(--color-hellmouth-50)]">
+            {event.title}
+          </p>
+        ) : (
+          <Link
+            href={`/schedule/${event.id}`}
+            className="block font-semibold text-[var(--color-hellmouth-50)] hover:text-[var(--color-crimson-300)] transition-colors mb-1 leading-snug"
+          >
+            {event.title}
+          </Link>
+        )}
 
         {room && (
           <Link
