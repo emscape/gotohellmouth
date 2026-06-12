@@ -62,7 +62,7 @@ Fan Experience Brunch with Amber Benson, Clare Kramer, Doug Jones, Emma Caulfiel
     displayLocationLabel: 'The Entrance',
   },
   { ...sundayCsvEvent('sun-mark-photo', 'Mark Lutz', '2026-06-14T12:00:00-07:00', '2026-06-14T12:30:00-07:00', 'photo-op-room', 'photo-op'), heroImage: '/images/photo-ops/mark-lutz.jpg' },
-  { ...sundayCsvEvent('sun-larry-photo', 'Larry Bagby', '2026-06-14T12:30:00-07:00', '2026-06-14T13:00:00-07:00', 'photo-op-room', 'photo-op'), heroImage: '/images/photo-ops/larry-bagby.jpg' },
+  { ...sundayCsvEvent('sun-larry-photo', 'Larry Bagby', '2026-06-14T12:45:00-07:00', '2026-06-14T13:15:00-07:00', 'photo-op-room', 'photo-op'), heroImage: '/images/photo-ops/larry-bagby.jpg' },
   sundayCsvEvent('sun-julie-autograph-midday', 'Julie Benz', '2026-06-14T12:00:00-07:00', '2026-06-14T13:00:00-07:00', 'autograph-alley', 'autograph'),
   sundayCsvEvent('sun-d-hoffrans-fold', "D'Hoffran's Fold: Curses, Chaos, and Career Vengeance", '2026-06-14T12:00:00-07:00', '2026-06-14T13:00:00-07:00', 'secondary-courtyard', 'workshop'),
   {
@@ -111,6 +111,7 @@ $85 | Limited to 30 each day`,
     heroImage: '/images/specialty-tableaux/lets-get-crazy.jpg',
   },
   sundayCsvEvent('sun-nerd-best', 'Watch the Watcher: A Live Crossover Event with Nerd Best Friends and Whitney Hathcock', '2026-06-14T15:00:00-07:00', '2026-06-14T15:45:00-07:00', 'panel-room-b', 'panel'),
+  sundayCsvEvent('sun-monster-bunny-workshop', 'Monster Bunny Workshop', '2026-06-14T15:00:00-07:00', '2026-06-14T15:40:00-07:00', 'panel-room-a', 'workshop'),
   {
     ...sundayCsvEvent('sun-is-this-seat-taken', 'Is This Seat Taken? (Clare Kramer, Amber Benson)', '2026-06-14T15:00:00-07:00', '2026-06-14T15:30:00-07:00', 'panel-room-a', 'photo-op'),
     description: `A one-of-a-kind pairing of Tara and Glory, brought together for the first time ever. Created exclusively for HellmouthCon and never offered at any other event.
